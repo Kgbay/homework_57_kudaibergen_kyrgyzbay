@@ -1,0 +1,97 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.navbar {
+    margin: 0 !important;
+    padding: 0;
+}
+.navbar, .footer {
+    background-color: #008000 !important;
+}
+.navbar-nav {
+    margin-left: auto;
+}
+.btn {
+    margin: 5px;
+}
+.navbar-toggler {
+    background-color: white !important;
+}
+.navbar-brand {
+    font-size: 30px !important;
+    font-family: 'Shantell Sans', cursive;
+    font-weight: bold;
+}
+.btn-outline-primary, .navbar-brand {
+    border-color: white !important;
+    color: white !important;
+}
+.btn-outline-primary:hover {
+    background-color: white !important;
+    color: #008000 !important;
+}
+.container {
+    margin: auto;
+    padding: 5px;
+}
+.card {
+    margin: 10px !important;
+    border: none !important;
+}
+.guest-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.guest-icons {
+    margin-bottom: 1px !important;
+}
+.card-body {
+    border-style: solid !important;
+    border-color: #00008B !important;
+    border-radius: 20px;
+}
+@media only screen and (max-width: 767px) {
+  .card {
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+}
+.btn-primary {
+    background-color: #00008B !important;
+    border-color: white !important;
+    border-radius: 10px !important;
+}
+form, .form-control {
+    border-color: #00008B !important;
+    border-style: solid;
+    padding: 20px;
+    border-radius: 10px;
+}
+.form-rm-confirm {
+    border-style: none !important;
+}
+.submit:hover{
+    background-color: #008000 !important;
+    color: white;
+}
+.rm-btn:hover {
+    background-color: red !important;
+    border-style: solid;
+    border-color: red !important;
+}
+.upd-btn:hover {
+    background-color: green !important;
+}
+.red-btn {
+    background-color: red !important;
+}
+footer {
+    height: 100px;
+    width: auto;
+    margin-top: auto;
+    margin: 0;
+}

@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'task_tracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': "task_tracker_db",
+        'NAME': "tracker_db",
         "USER": "postgres",
         "PASSWORD": "kuka2305",
         "HOST": "localhost",
