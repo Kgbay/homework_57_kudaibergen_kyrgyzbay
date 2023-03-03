@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+
 
 class Task(models.Model):
     summary = models.CharField(
@@ -36,6 +38,11 @@ class Task(models.Model):
     deleted_at = models.DateTimeField(
         verbose_name='Дата и время удаления',
         null=True, default=None)
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_deleted = True
+        self.deleted_at = timezone.now()
+        self.save()
 
     def __str__(self):
         return f"{self.summary}, {self.status}, {self.type}"

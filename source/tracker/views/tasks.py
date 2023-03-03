@@ -1,7 +1,8 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from tracker.models import Task, Type, Status, TypeChoice, StatusChoice
+
 
 def add_view(request: WSGIRequest):
     if request.method == "GET":
@@ -21,4 +22,35 @@ def add_view(request: WSGIRequest):
     status = Status.objects.get(status_name=task_data['status'])
     type = Type.objects.get(type_name=task_data['type'])
     Task.objects.create(summary=task_data['summary'], description=task_data['description'], status=status, type=type)
+    return redirect('task_view')
+
+
+def task_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'task.html', context={
+        'task': task
+    })
+
+
+def task_update_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        task.summary = request.POST.get('summary')
+        task.description = request.POST.get('description')
+        task.status = request.POST.get('status')
+        task.save()
+        return redirect('index')
+    return render(request, 'task_update.html', context={
+        'task': task
+    })
+
+
+def remove_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'task_confirm_remove.html', context={'task': task})
+
+
+def task_confirm_remove(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    task.delete()
     return redirect('index')

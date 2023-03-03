@@ -3,7 +3,7 @@
 {% block content %}
   <div class="container">
     <h1>Добавить задание</h1>
-        <form action="{% url 'task_add' %}" method="post">
+        <form action="{% url 'task_add' %}" method="post" class="form-add">
                 {% csrf_token %}
 
                 <div class="mb-3">
