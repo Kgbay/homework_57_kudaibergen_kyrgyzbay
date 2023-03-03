@@ -6,12 +6,8 @@ from tracker.models import Task, Type, Status, TypeChoice, StatusChoice
 def add_view(request: WSGIRequest):
     if request.method == "GET":
         tasks = Task.objects.all()
-        types = Type.objects.all()
-        statuses = Status.objects.all()
         context = {
             'tasks': tasks,
-            'types': types,
-            'statuses': statuses,
             'type_choices': TypeChoice.choices,
             'status_choices': StatusChoice.choices
         }
@@ -22,5 +18,7 @@ def add_view(request: WSGIRequest):
         'status': request.POST.get('status'),
         'type': request.POST.get('type')
     }
-    Task.objects.create(**task_data)
-    return redirect('index_view')
+    status = Status.objects.get(status_name=task_data['status'])
+    type = Type.objects.get(type_name=task_data['type'])
+    Task.objects.create(summary=task_data['summary'], description=task_data['description'], status=status, type=type)
+    return redirect('index')

@@ -13,18 +13,18 @@
                 <div class="mb-3">
                     <select id="status" name="status" required class="form-control">
                         <option>Выберите статус</option>
-                        {% for status in statuses %}
-                            <option value="{{ status.pk }}">{{ status.status_name }}</option>
-                        {% endfor %}
+                            {% for choice in status_choices %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
                     </select>
                 </div>
 
                 <div class="mb-3">
                     <select id="type" name="type" required class="form-control">
                         <option>Выберите тип</option>
-                        {% for type in types %}
-                            <option value="{{ type.pk }}">{{ type.type_name }}</option>
-                        {% endfor %}
+                            {% for choice in type_choices %}
+                                    <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                            {% endfor %}
                     </select>
                 </div>
 
