@@ -4,6 +4,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from tracker.models import Task, Type, Status, TypeChoice, StatusChoice
 
 
+def task_view(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    return render(request, 'task.html', context={
+        'task': task
+    })
+
+
 def add_view(request: WSGIRequest):
     if request.method == "GET":
         tasks = Task.objects.all()
@@ -25,23 +32,21 @@ def add_view(request: WSGIRequest):
     return redirect('task_view')
 
 
-def task_view(request, pk):
-    task = get_object_or_404(Task, pk=pk)
-    return render(request, 'task.html', context={
-        'task': task
-    })
-
-
 def task_update_view(request, pk):
     task = get_object_or_404(Task, pk=pk)
     if request.method == 'POST':
         task.summary = request.POST.get('summary')
         task.description = request.POST.get('description')
-        task.status = request.POST.get('status')
+        status = Status.objects.get(status_name=request.POST.get('status'))
+        type = Type.objects.get(type_name=request.POST.get('type'))
+        task.status = status
+        task.type = type
         task.save()
-        return redirect('index')
+        return redirect('task_view', pk=task.pk)
     return render(request, 'task_update.html', context={
-        'task': task
+        'task': task,
+        'type_choices': TypeChoice.choices,
+        'status_choices': StatusChoice.choices
     })
 
 

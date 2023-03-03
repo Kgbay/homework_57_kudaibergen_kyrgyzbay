@@ -1,18 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Add task{% endblock %}
+{% block title %}Update task{% endblock %}
 {% block content %}
   <div class="container">
-    <h1>Добавить задание</h1>
-        <form action="{% url 'task_add' %}" method="post" class="form-add">
+    <h1>Обновить задание</h1>
+        <form action="{% url 'update_task' task.pk %}" method="post" class="form-add">
                 {% csrf_token %}
 
                 <div class="mb-3">
-                    <input type="text" id="summary" name="summary" placeholder="Краткое описание" class="form-control" required>
+                    <input type="text" id="summary" name="summary" placeholder="Краткое описание" class="form-control" required value="{{ task.summary }}">
                 </div>
 
                 <div class="mb-3">
                     <select id="status" name="status" required class="form-control">
-                        <option>Выберите статус</option>
                             {% for choice in status_choices %}
                                     <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                             {% endfor %}
@@ -21,7 +20,6 @@
 
                 <div class="mb-3">
                     <select id="type" name="type" required class="form-control">
-                        <option>Выберите тип</option>
                             {% for choice in type_choices %}
                                     <option value="{{ choice.0 }}">{{ choice.1 }}</option>
                             {% endfor %}
@@ -29,11 +27,11 @@
                 </div>
 
                 <div class="mb-3">
-                    <textarea id="text" name="description" placeholder="Описание" class="form-control" rows="4" required></textarea>
+                    <textarea id="description" name="description" placeholder="Описание" class="form-control" rows="4" required>{{ task.description }}</textarea>
                 </div>
 
                 <div class="mb-3">
-                    <input type="submit" class="form-control submit" value="Добавить">
+                    <input type="submit" class="form-control submit" value="Обновить">
                 </div>
 
             </form>
