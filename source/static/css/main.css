@@ -8,13 +8,16 @@ body {
     padding: 0;
 }
 .navbar, .footer {
-    background-color: #008000 !important;
+    background-color: #9999ff !important;
 }
 .navbar-nav {
     margin-left: auto;
 }
 .btn {
     margin: 5px;
+}
+.btn-info {
+    color: white !important;
 }
 .navbar-toggler {
     background-color: white !important;
@@ -36,24 +39,6 @@ body {
     margin: auto;
     padding: 5px;
 }
-.card {
-    margin: 10px !important;
-    border: none !important;
-}
-.guest-card {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.guest-icons {
-    margin-bottom: 1px !important;
-}
-.card-body {
-    border-style: solid !important;
-    border-color: #00008B !important;
-    border-radius: 20px;
-}
 @media only screen and (max-width: 767px) {
   .card {
     width: 100% !important;
@@ -66,28 +51,67 @@ body {
     border-radius: 10px !important;
 }
 form, .form-control {
-    border-color: #00008B !important;
+    border-color: white !important;
     border-style: solid;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 20px !important;
+    border-radius: 30px;
 }
 .form-rm-confirm {
     border-style: none !important;
 }
 .submit:hover{
-    background-color: #008000 !important;
+    background-color: #ffcc99 !important;
     color: white;
 }
-.rm-btn:hover {
-    background-color: red !important;
-    border-style: solid;
-    border-color: red !important;
+a:link {
+    text-decoration: none;
 }
-.upd-btn:hover {
-    background-color: green !important;
+.my-legend .legend-title {
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 100%;
 }
-.red-btn {
-    background-color: red !important;
+.my-legend .legend-scale ul {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style: none;
+}
+.my-legend .legend-scale ul li {
+    display: block;
+    float: left;
+    width: 100px;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 80%;
+    list-style: none;
+}
+.my-legend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 15px;
+    width: 100%;
+}
+.my-legend .legend-source {
+    font-size: 70%;
+    color: #999;
+    clear: both;
+}
+.my-legend a {
+    color: #777;
+}
+.card {
+    margin-top: 20px;
+}
+.products-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.form-add {
+    background-color: #9999ff;
 }
 footer {
     height: 100px;
